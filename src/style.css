@@ -1,0 +1,21 @@
+body {
+  background: rgb(212, 212, 212);
+}
+
+.wrapper {
+  width: 500px;
+  margin: auto;
+}
+
+.deleteBtn {
+  color: red;
+}
+
+.checkTodo {
+  margin-right: 10px;
+}
+
+.completeTask {
+  text-decoration: line-through;
+  color: grey;
+}
