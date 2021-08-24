@@ -10,8 +10,7 @@ import displayTodos from './displayTodos.js';
 const addNewTodo = document.querySelector('.addNewTodo');
 const todoList = document.querySelector('#todoList');
 const clearCompleted = document.querySelector('#clearCompleted');
-// const todos = JSON.parse(localStorage.getItem('todos'));
-const todos = [];
+const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
 function refreshUI() {
   todoList.innerHTML = '';
