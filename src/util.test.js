@@ -6,12 +6,12 @@ const todos = localStorage.__STORE__['todos'] || [];
 /* eslint-disable */
 
 describe('Add todo method', () => {
-  test('adds new todo', () => {
-  expect(addNewItem(todos, '')).toBe(false);
-});
+  test('add empty todo', () => {
+    expect(addNewItem(todos, '')).toBe(false);
+  });
 
-test('adds new todo', () => {
-  expect(addNewItem(todos, 'New todo')).toBe(true);
-});
+  test('add new todo', () => {
+    expect(addNewItem(todos, 'New todo')).toBe(true);
+  });
 });
 
