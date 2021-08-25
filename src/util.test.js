@@ -4,7 +4,6 @@ import removeTodo from './removeTodo.js';
 const todoObject = { description: 'New todo', completed: false, index: 1 };
 const todoObject2 = { description: 'New todo 2', completed: false, index: 1 };
 
-
 require('jest-localstorage-mock');
 /* eslint-disable */
 const todos = localStorage.__STORE__['todos'] || [];
