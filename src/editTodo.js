@@ -1,7 +1,8 @@
-export default (e) => {
-  const todosArray = JSON.parse(localStorage.getItem('todos'));
-  const todoObject = todosArray.find((todo) => todo.index === Number(e.target.parentNode.id));
-  const index = todosArray.indexOf(todoObject);
-  todosArray[index].description = e.target.textContent;
-  localStorage.setItem('todos', JSON.stringify(todosArray));
+export default (todosArray, index, todoString) => {
+  if (todosArray.length && index !== -1 && todoString) {
+    todosArray[index].description = todoString;
+    localStorage.setItem('todos', JSON.stringify(todosArray));
+    return true;
+  }
+  return false;
 };

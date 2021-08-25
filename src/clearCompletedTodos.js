@@ -1,5 +1,4 @@
-export default () => {
-  const todosArray = JSON.parse(localStorage.getItem('todos'));
+export default (todosArray) => {
   const itemsToBeDeleted = todosArray.filter((val) => val.completed);
   if (itemsToBeDeleted.length) {
     itemsToBeDeleted.forEach((val) => {
@@ -7,5 +6,7 @@ export default () => {
       todosArray.splice(index, 1);
       localStorage.setItem('todos', JSON.stringify(todosArray));
     });
+    return true;
   }
+  return false;
 };

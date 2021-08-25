@@ -25,7 +25,17 @@ function diplayTodoList() {
   const checkBoxes = document.querySelectorAll('.checkTodo');
   checkBoxes.forEach((check) => {
     check.addEventListener('change', (e) => {
-      completeTask(e);
+      const node = e.target.parentNode;
+      const todoObject = todos.find((todo) => todo.index === Number(node.id));
+      const index = todos.indexOf(todoObject);
+
+      if (!todos[index].completed) {
+        completeTask(todos, index);
+        node.children[1].classList.add('completeTask');
+      } else {
+        completeTask(todos, index);
+        node.children[1].classList.add('completeTask');
+      }
       refreshUI();
     });
   });
@@ -34,7 +44,9 @@ function diplayTodoList() {
   contentEditables.forEach((btn) => {
     btn.addEventListener('keypress', (e) => {
       if (e.key === 'Enter' && e.target.textContent) {
-        editTodo(e);
+        const todoObject = todos.find((todo) => todo.index === Number(e.target.parentNode.id));
+        const index = todos.indexOf(todoObject);
+        editTodo(todos, index, e.target.textContent);
         refreshUI();
       }
     });
@@ -43,7 +55,8 @@ function diplayTodoList() {
   const deleteBtns = document.querySelectorAll('.deleteBtn');
   deleteBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
-      removeTodo(e);
+      const todoObject = todos.find((todo) => todo.index === Number(e.target.parentNode.id));
+      removeTodo(todos, todoObject);
       refreshUI();
     });
   });
@@ -58,7 +71,8 @@ addNewTodo.addEventListener('keypress', (e) => {
 });
 
 clearCompleted.addEventListener('click', () => {
-  clearCompletedTodos();
+  const todosArray = JSON.parse(localStorage.getItem('todos'));
+  clearCompletedTodos(todosArray);
   refreshUI();
 });
 
