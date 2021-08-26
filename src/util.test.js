@@ -2,7 +2,7 @@ import addNewItem from './addTodo.js';
 import { removeTodo, todoObject, todoObject2 } from './removeTodo.js';
 import localStorageMock from './__mock__/storage.js';
 import editTodo from './editTodo.js';
-
+import clearCompletedTodos from './clearCompletedTodos.js';
 const todos = [];
 
 describe('Add todo method', () => {
@@ -45,4 +45,33 @@ describe('Edit function', () => {
     const arr = localStorageMock.getItem('todos');
     expect(arr[0].description !== todoObject.description).toBe(true);
   });
+
+  test('should return false when object in mock is edited', () => {
+    // addNewItem(todos, 'New todo');
+    const todoString = 'Update new todo';
+    const index = 10;
+    console.log(todos[index])
+    expect(editTodo(todos, index, todoString)).toBe(false);
+  });
 });
+
+describe('ClearAllCompletedTodos tests', () => {
+  test('ClearAllCompletedTodos tests', () => {
+    todos[0].completed = true;
+    expect(clearCompletedTodos(todos)).toHaveLength(0);
+  })
+
+  test('should clear completed items from localstorage',()=>{
+    addNewItem(todos, 'New todo');
+    const arr = localStorageMock.getItem('todos');
+    arr[0].completed = true;
+    expect(clearCompletedTodos(arr)).toHaveLength(0);
+  })
+
+  test('should clear completed items from localstorage',()=>{
+    addNewItem(todos, 'New todo');
+    const arr = localStorageMock.getItem('todos');
+    arr[0].completed = false;
+    expect(clearCompletedTodos(arr)).toHaveLength(1);
+  })
+})

@@ -72,7 +72,8 @@ addNewTodo.addEventListener('keypress', (e) => {
 
 clearCompleted.addEventListener('click', () => {
   const todosArray = JSON.parse(localStorage.getItem('todos'));
-  clearCompletedTodos(todosArray);
+ const allCleared = clearCompletedTodos(todosArray);
+  localStorage.setItem('todos', JSON.stringify(allCleared));
   window.location.reload();
 });
 

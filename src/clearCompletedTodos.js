@@ -5,10 +5,7 @@ export default (todosArray) => {
       const index = todosArray.indexOf(val);
       todosArray.splice(index, 1);
     });
-
-    localStorage.setItem('todos', JSON.stringify(todosArray));
-
-    return true;
+    return todosArray;
   }
-  return false;
+  return todosArray;
 };
