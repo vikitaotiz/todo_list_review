@@ -54,14 +54,18 @@ function diplayTodoList() {
   deleteBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       const todoObject = todos.find((todo) => todo.index === Number(e.target.parentNode.id));
-      if (removeTodo(todos, todoObject)) refreshUI();
+      const todosArray = removeTodo(todos, todoObject);
+      localStorage.setItem('todos', JSON.stringify(todosArray));
+      refreshUI();
     });
   });
 }
 
 addNewTodo.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') {
-    if (addNewItem(todos, addNewTodo.value)) refreshUI();
+    const todosArray = addNewItem(todos, addNewTodo.value);
+    localStorage.setItem('todos', JSON.stringify(todosArray));
+    refreshUI();
     addNewTodo.value = '';
   }
 });

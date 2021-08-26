@@ -22,8 +22,7 @@
                 "js": "always",
                 "json": "always"
             }
-        ],
-        "no-underscore-dangle": "off"
+        ]
     },
     "ignorePatterns": [
         "dist/",

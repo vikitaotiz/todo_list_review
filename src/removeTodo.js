@@ -2,10 +2,9 @@ function removeTodo(todosArray, todoObject) {
   if (todosArray.length && todoObject) {
     const index = todosArray.indexOf(todoObject);
     todosArray.splice(index, 1);
-    localStorage.setItem('todos', JSON.stringify(todosArray));
-    return true;
+    return todosArray;
   }
-  return false;
+  return todosArray;
 }
 
 const todoObject = { description: 'New todo', completed: false, index: 1 };
