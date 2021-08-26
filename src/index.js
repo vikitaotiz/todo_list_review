@@ -55,7 +55,6 @@ function diplayTodoList() {
     btn.addEventListener('click', (e) => {
       const todoObject = todos.find((todo) => todo.index === Number(e.target.parentNode.id));
       const todosArray = removeTodo(todos, todoObject);
-      console.log(todosArray)
       localStorage.setItem('todos', JSON.stringify(todosArray));
       refreshUI();
     });
@@ -73,9 +72,8 @@ addNewTodo.addEventListener('keypress', (e) => {
 
 clearCompleted.addEventListener('click', () => {
   const todosArray = JSON.parse(localStorage.getItem('todos'));
-  clearCompletedTodos(todosArray)
-  // refreshUI();
-  window.location.reload()
+  clearCompletedTodos(todosArray);
+  window.location.reload();
 });
 
 window.onload = () => { diplayTodoList(); };
