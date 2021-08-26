@@ -19,11 +19,11 @@ describe('Add todo method', () => {
 });
 
 describe('remove method', () => {
-  test('remove single todo', () => {
+  test('delete should remove a single todo', () => {
     expect(removeTodo(todos, todoObject)).toHaveLength(0);
   });
 
-  test('add empty todo', () => {
+  test('should empty storage if has only one item', () => {
     expect(localStorageMock.getItem('todos')).toHaveLength(0);
   });
 
