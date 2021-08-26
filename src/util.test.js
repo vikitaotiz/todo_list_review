@@ -1,6 +1,7 @@
 import addNewItem from './addTodo.js';
 import { removeTodo, todoObject, todoObject2 } from './removeTodo.js';
 import localStorageMock from './__mock__/storage.js';
+import editTodo from './editTodo.js';
 
 const todos = [];
 
@@ -29,5 +30,19 @@ describe('remove method', () => {
 
   test('should not remove non existing task', () => {
     expect(removeTodo(todos, todoObject2)).toHaveLength(0);
+  });
+});
+
+describe('Edit function', () => {
+  test('edit single todo', () => {
+    addNewItem(todos, 'New todo');
+    const todoString = 'Update new todo';
+    const index = todos.findIndex(() => todoObject.index);
+    expect(editTodo(todos, index, todoString)).toBe(true);
+  });
+
+  test('should return true when object in mock is edited', () => {
+    const arr = localStorageMock.getItem('todos');
+    expect(arr[0].description !== todoObject.description).toBe(true);
   });
 });

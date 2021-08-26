@@ -20,7 +20,7 @@ function refreshUI() {
 }
 
 function diplayTodoList() {
-  displayTodos(todoList);
+  displayTodos(todoList, todos);
 
   const checkBoxes = document.querySelectorAll('.checkTodo');
   checkBoxes.forEach((check) => {
