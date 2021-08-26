@@ -20,7 +20,7 @@ function refreshUI() {
 }
 
 function diplayTodoList() {
-  displayTodos(todoList);
+  displayTodos(todoList, todos);
 
   const checkBoxes = document.querySelectorAll('.checkTodo');
   checkBoxes.forEach((check) => {
@@ -31,10 +31,14 @@ function diplayTodoList() {
 
       if (!todos[index].completed) {
         node.children[1].classList.add('completeTask');
-        if (completeTask(todos, index)) refreshUI();
+        const arr1 = completeTask(todos, index);
+        localStorage.setItem('todos', JSON.stringify(arr1));
+        refreshUI();
       } else {
         node.children[1].classList.add('completeTask');
-        if (completeTask(todos, index)) refreshUI();
+        const arr1 = completeTask(todos, index);
+        localStorage.setItem('todos', JSON.stringify(arr1));
+        refreshUI();
       }
     });
   });
@@ -72,7 +76,8 @@ addNewTodo.addEventListener('keypress', (e) => {
 
 clearCompleted.addEventListener('click', () => {
   const todosArray = JSON.parse(localStorage.getItem('todos'));
-  clearCompletedTodos(todosArray);
+  const allCleared = clearCompletedTodos(todosArray);
+  localStorage.setItem('todos', JSON.stringify(allCleared));
   window.location.reload();
 });
 

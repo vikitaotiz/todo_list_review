@@ -1,7 +1,6 @@
 export default (todosArray, index) => {
-  if (todosArray.length && index !== -1) {
+  if (todosArray.length && todosArray[index]) {
     todosArray[index].completed = !todosArray[index].completed;
-    localStorage.setItem('todos', JSON.stringify(todosArray));
     return true;
   }
   return false;

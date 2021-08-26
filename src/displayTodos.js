@@ -1,8 +1,6 @@
-export default (todoList) => {
-  const data = localStorage.getItem('todos');
-
-  if (data) {
-    JSON.parse(data).forEach((val) => {
+export default (todoList, data) => {
+  if (data.length) {
+    data.forEach((val) => {
       const li = document.createElement('li');
       li.classList.add('list-group-item');
 
