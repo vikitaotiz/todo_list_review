@@ -61,8 +61,7 @@ describe('Check completed status function', () => {
     expect(completeTask(todos, index)).toBe(true);
   });
 
-  test('check single todo', () => {
-    todos[0].completed = true;
+  test('check non existing todo', () => {
     const index = 10;
     expect(completeTask(todos, index)).toBe(false);
   });
