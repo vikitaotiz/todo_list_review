@@ -1,5 +1,4 @@
 export default (todoList, data) => {
-  console.log(data);
   if (data.length) {
     data.forEach((val) => {
       const li = document.createElement('li');

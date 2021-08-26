@@ -31,10 +31,14 @@ function diplayTodoList() {
 
       if (!todos[index].completed) {
         node.children[1].classList.add('completeTask');
-        if (completeTask(todos, index)) refreshUI();
+        const arr1 = completeTask(todos, index);
+        localStorage.setItem('todos', JSON.stringify(arr1));
+        refreshUI();
       } else {
         node.children[1].classList.add('completeTask');
-        if (completeTask(todos, index)) refreshUI();
+        const arr1 = completeTask(todos, index);
+        localStorage.setItem('todos', JSON.stringify(arr1));
+        refreshUI();
       }
     });
   });

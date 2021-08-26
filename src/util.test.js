@@ -3,6 +3,7 @@ import { removeTodo, todoObject, todoObject2 } from './removeTodo.js';
 import localStorageMock from './__mock__/storage.js';
 import editTodo from './editTodo.js';
 import clearCompletedTodos from './clearCompletedTodos.js';
+import completeTask from './completeTask.js';
 
 const todos = [];
 
@@ -51,6 +52,19 @@ describe('Edit function', () => {
     const todoString = 'Update new todo';
     const index = 10;
     expect(editTodo(todos, index, todoString)).toBe(false);
+  });
+});
+
+describe('Check completed status function', () => {
+  test('check single todo', () => {
+    const index = todos.findIndex(() => todoObject.index);
+    expect(completeTask(todos, index)).toBe(true);
+  });
+
+  test('check single todo', () => {
+    todos[0].completed = true;
+    const index = 10;
+    expect(completeTask(todos, index)).toBe(false);
   });
 });
 
